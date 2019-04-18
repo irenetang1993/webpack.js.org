@@ -56,6 +56,25 @@ export function cube(x) {
 }
 ```
 
+设置mode: 'development' 确保打包后的文件不会被压缩
+__webpack.config.js__
+```
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+- }
++ },
++ mode: 'development',
++ optimization: {
++   usedExports: true
++ }
+};
+```
+
 接着，更新入口脚本，使用其中一个新方法，并且为了简单，将 `lodash` 删除：
 
 __src/index.js__
